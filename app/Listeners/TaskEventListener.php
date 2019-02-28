@@ -26,8 +26,8 @@ class TaskEventListener
      */
     public function handle(TaskEvent $event)
     {
-        // return $event;
-        print_r($event);
-        dd($event);
+        return $event;
+        // print_r($event);
+        // dd($event);
     }
 }

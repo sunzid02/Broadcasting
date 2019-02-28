@@ -29,5 +29,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    created(){
+        Echo.private('testChannel')
+            .listen('TaskEvent', (e) => {
+                // console.log(e);
+                alert(e);
+            });
+    }
 });
