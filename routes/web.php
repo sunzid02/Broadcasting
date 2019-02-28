@@ -10,9 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Events\TaskEvent;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/event', function () {
+    event(new TaskEvent('hey how are u?'));
 });
 
 
