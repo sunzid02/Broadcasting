@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('message', require('./components/message.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,8 +33,23 @@ const app = new Vue({
     created(){
         Echo.private('testChannel')
             .listen('TaskEvent', (e) => {
-                // console.log(e);
-                alert(e);
+                console.log(e);
+                // alert('proof');
             });
-    }
+    },
+
+    data:{
+        message:'',
+        chat:{
+            message:[]
+        }
+    },
+    methods:{
+        send(){
+            if (this.message.length) {
+               this.chat.message.push(this.message);
+               this.message='';
+            }
+        }
+    },
 });
