@@ -9,20 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// for auto scroll
 import Vue from 'vue'
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('message', require('./components/message.vue').default);
 
@@ -42,18 +32,46 @@ const app = new Vue({
             });
     },
 
+
     data:{
         message:'',
         chat:{
-            message:[]
-        }
+            message:[],
+            user:[],
+            color:[],
+        },
     },
-    methods:{
-        send(){
-            if (this.message.length) {
-               this.chat.message.push(this.message);
-               this.message='';
+
+    methods: {
+        send() {
+            if (this.message.length != 0) {
+                this.chat.message.push(this.message);
+                this.chat.user.push('you');
+                this.chat.color.push('success');
+                axios.post('/send', {
+                    message: this.message,
+                })
+                    .then(response => {
+                        console.log(response);
+                        this.message = ''
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
-        }
+        },
+
     },
+
+    //receive
+    mounted() {
+        Echo.private('chat')
+            .listen('ChatEvent', (e) => {
+                this.chat.message.push(e.message);
+                this.chat.user.push(e.user);
+                this.chat.color.push('warning');
+                console.log(e);
+            });
+    }
+
 });

@@ -5,7 +5,7 @@
         </li>
 
         <small class="badge float-right" :class="badgeClass">
-            Zia
+            {{user}}
         </small>
     </div>
 </template>
@@ -13,7 +13,8 @@
 <script>
     export default {
         props:[
-            'color'
+            'color',
+            'user'
         ],
         computed:{
             className(){
