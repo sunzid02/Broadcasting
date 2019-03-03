@@ -16,19 +16,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/event', function () {
-    event(new TaskEvent('Yo Sunzid?'));
-});
-
-Route::get('/listen', function () {
-    return view('listenBroadcast');
-});
+Route::get('chat', 'ChatController@chat');
+Route::post('send', 'ChatController@send');
 
 
-Route::get('/first', function () {
-   echo "Hello 5.8";
-});
+// Route::get('/event', function () {
+//     event(new TaskEvent('Yo Sunzid?'));
+// });
+
+// Route::get('/listen', function () {
+//     return view('listenBroadcast');
+// });
+
+
+// Route::get('/first', function () {
+//    echo "Hello 5.8";
+// });
 
 Auth::routes();
 
