@@ -43,6 +43,7 @@ const app = new Vue({
 
         },
         typing:'',
+        numberOfusers: 0,
     },
 
 
@@ -107,6 +108,23 @@ const app = new Vue({
                 } else {
                     this.typing = ''
                 }
+            });
+
+
+            //user join leave
+        Echo.join(`chat`)
+            .here((users) => {
+                this.numberOfusers = users.length;
+                // console.log(users);
+            })
+            .joining((user) => {
+                this.numberOfusers += 1;
+
+                // console.log(user.name);
+            })
+            .leaving((user) => {
+                this.numberOfusers -= 1;
+                // console.log(user.name);
             });
     }
 

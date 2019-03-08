@@ -19,6 +19,7 @@ Broadcast::channel('testChannel', function () {
     return true;
 });
 
-Broadcast::channel('chat', function () {
-    return true;
+Broadcast::channel('chat', function ($user) {
+    // return true;
+    return ['name'=>$user->name];
 });

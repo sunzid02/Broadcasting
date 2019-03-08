@@ -59877,7 +59877,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       color: [],
       time: []
     },
-    typing: ''
+    typing: '',
+    numberOfusers: 0
   },
   watch: {
     message: function message() {
@@ -59930,6 +59931,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       } else {
         _this2.typing = '';
       }
+    }); //user join leave
+
+    Echo.join("chat").here(function (users) {
+      _this2.numberOfusers = users.length; // console.log(users);
+    }).joining(function (user) {
+      _this2.numberOfusers += 1; // console.log(user.name);
+    }).leaving(function (user) {
+      _this2.numberOfusers -= 1; // console.log(user.name);
     });
   }
 });

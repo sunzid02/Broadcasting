@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row" id="app">
                 <div class="offset-4 col-4 offset-sm-1 col-sm-10">
-                    <li class="list-group-item active">Chat ROOM</li>
+                    <li class="list-group-item active">Chat ROOM  <span class="badge badge-pill badge-warning"> @{{  numberOfusers }}</span> </li>
 
                     <div class="badge badge-pill badge-primary"> @{{ typing }} </div>
                   
