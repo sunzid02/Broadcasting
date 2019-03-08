@@ -75,8 +75,9 @@ const app = new Vue({
                     this.chat.user.push('you');
                     this.chat.time.push(this.getTime());
 
-                    axios.post('/send', {
+                    axios.post('send', {
                         message: this.message,
+                        chat: this.chat 
                     })
 
                     .then(response => {
@@ -95,6 +96,23 @@ const app = new Vue({
             return time.getHours() + ':' + time.getMinutes();
         },
 
+        getOldMessages(){
+            axios.post('/getOldMessage')
+                .then(response => {
+                    console.log(response);
+
+                    if (response.data != '') 
+                    {
+                        this.chat = response.data;
+                    }
+
+                })
+                
+                .catch( error => {
+                    console.log(error);
+                });
+        }
+
     },
 
     //receive
@@ -105,6 +123,16 @@ const app = new Vue({
                 this.chat.user.push(e.user);
                 this.chat.color.push('warning');
                 this.chat.time.push(this.getTime());
+                axios.post('saveToSession', {
+                    chat: this.chat
+                })
+                    .then(response => {
+
+                    })
+
+                    .catch(error => {
+                        console.log(error);
+                    });
 
                 console.log(e);
             })
