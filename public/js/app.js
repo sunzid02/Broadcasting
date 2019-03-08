@@ -59876,7 +59876,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       user: [],
       color: [],
       time: []
-    }
+    },
+    typing: ''
   },
   watch: {
     message: function message() {

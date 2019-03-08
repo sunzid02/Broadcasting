@@ -42,7 +42,9 @@ const app = new Vue({
             time:[],
 
         },
+        typing:'',
     },
+
 
 
     watch: {
@@ -96,6 +98,8 @@ const app = new Vue({
 
                 console.log(e);
             })
+
+
 
             .listenForWhisper('typing', (e) => {
                 if (e.name != '') {
