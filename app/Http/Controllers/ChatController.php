@@ -28,7 +28,30 @@ class ChatController extends Controller
     {
 
         $user = User::find(Auth::id());
+
+        $this->saveToSession($request);
+
         event(new ChatEvent($request->message,$user));
+        // return $request->all();
+
+
+    }
+
+    public function saveToSession(Request $request)
+    {
+        session()->put('chat', $request->chat);
+    } 
+
+    public function getOldMessage()
+    {
+    	return session('chat');
+    }
+
+    public function send2()
+    {
+
+        $user = User::find(Auth::id());
+        event(new ChatEvent("test",$user));
                                 return $request->all();
 
 
