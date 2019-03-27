@@ -12,11 +12,13 @@
 */
 use App\Events\TaskEvent;
 
+// Broadcast::routes(['middleware' => ['auth:api']]);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('chat', 'ChatController@chat');
+Route::get('chat', 'ChatController@chat')->name('chat.chat');
 
 Route::get('check', function()
 {

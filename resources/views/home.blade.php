@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    
+                    <a href="{{ route('chat.chat') }}">CHAT</a>
                 </div>
             </div>
         </div>
