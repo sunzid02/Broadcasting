@@ -38,6 +38,8 @@
                         v-model='message' @keyup.enter='send'>
                 </div>
             </div>
+
+            <a href="{{ route('home') }}">Home</a>
         </div>
 
 
