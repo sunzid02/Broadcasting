@@ -46,3 +46,9 @@ Route::post('saveToSession','ChatController@saveToSession');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/crud', 'CrudController@index')->name('crud.index');
+
+
+Route::resource('employee', 'EmployeeController');
