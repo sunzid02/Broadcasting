@@ -63,6 +63,60 @@
     <!--end add  Modal -->
 
 
+    <!--starts edit  Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+                <form action="/employee" method="POST" id="editForm">
+                    
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                    
+                    
+
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder="last name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="address">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                <input type="text" class="form-control"  id="mobile" name="mobile" placeholder="mobile">
+                            </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--end edit  Modal -->
+
+
 
 
 
